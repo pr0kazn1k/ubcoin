@@ -73,4 +73,5 @@ export default function (Token, Crowdsale, wallets) {
     await increaseTimeTo(this.afterEnd);
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
   });
+
 }

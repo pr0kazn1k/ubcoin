@@ -28,15 +28,15 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addValueBonus(20000000000000000000, 50);
-    await crowdsale.addValueBonus(50000000000000000000, 65);
-    await crowdsale.addValueBonus(300000000000000000000, 80);
-    await crowdsale.addMilestone(20, 40);
-    await crowdsale.addMilestone(20, 25);
-    await crowdsale.addMilestone(20, 20);
-    await crowdsale.addMilestone(20, 15);
-    await crowdsale.addMilestone(20, 8);
-    await crowdsale.addMilestone(4, 0);
+    await crowdsale.addValueBonus(20000000000000000000,30); // 20 eth - 30%
+    await crowdsale.addValueBonus(50000000000000000000,65); // 50 eth - 65%
+    await crowdsale.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    await crowdsale.addMilestone(10, 88);
+    await crowdsale.addMilestone(10, 37);
+    await crowdsale.addMilestone(10, 25);
+    await crowdsale.addMilestone(15, 12);
+    await crowdsale.addMilestone(15, 7);
+    await crowdsale.addMilestone(20, 0);
     await crowdsale.setWallet(this.wallet);
     await crowdsale.setBountyTokensWallet(this.BountyTokensWallet);
     await crowdsale.setReservedTokensWallet(this.ReservedTokensWallet);

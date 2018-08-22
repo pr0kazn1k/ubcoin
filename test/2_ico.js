@@ -10,7 +10,7 @@ import valuebonus from './ico/valuebonus';
 import bounty from './ico/bounty';
 import additional from './ico/additional';
 
-const token = artifacts.require('UBCoinToken.sol');
+const token = artifacts.require('NODVIXToken.sol');
 const crowdsale = artifacts.require('ICO.sol');
 const teamwallet = artifacts.require('FreezeTokensWallet.sol');
 
@@ -46,17 +46,17 @@ contract('ICO - additional features test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('20 May 2018 00:00:00 GMT');
-  this.period = 104;
+  this.start = unixTime('1 Dec 2018 00:00:00 GMT');
+  this.period = 80;
   this.price = tokens(14286);
-  this.hardcap = ether(96000);
-  this.minInvestedLimit = ether(0.1);
+  this.hardcap = ether(20000);
+  this.minInvestedLimit = ether(0.01);
   this.wallet = '0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F';
   this.BountyTokensWallet = '0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6';
   this.ReservedTokensWallet = '0xE1D1898660469797B22D348Ff67d54643d848295';
   this.TeamTokensPercent = 12;
   this.BountyTokensPercent = 4;
-  this.ReservedTokensPercent = 34;
+  this.ReservedTokensPercent = 9;
   this.PercentRate = 100;
 
   // variables for additional testing convinience

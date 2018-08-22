@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 import './ownership/Ownable.sol';
 
-contract UBCoinToken {
+contract NODVIXToken {
   function setSaleAgent(address newSaleAgent) public;
   function transferOwnership(address newOwner) public;
 }
@@ -14,6 +14,7 @@ contract PreICO {
   function setPrice(uint newPrice) public;
   function setMinInvestedLimit(uint newMinInvestedLimit) public;
   function setHardcap(uint newHardcap) public;
+  //function getValueBonusTokens(uint tokens, uint invested) public;
   function setNextSaleAgent(address newICO) public;
   function setToken(address newToken) public;
   function transferOwnership(address newOwner) public;
@@ -25,6 +26,7 @@ contract ICO {
   function setPrice(uint newPrice) public;
   function setMinInvestedLimit(uint newMinInvestedLimit) public;
   function setHardcap(uint newHardcap) public;
+  //function getValueBonusTokens(uint tokens, uint invested) public;
   function setWallet(address newWallet) public;
   function setTeamTokensWallet(address newTeamTokensWallet) public;
   function setBountyTokensWallet (address newBountyWallet) public;
@@ -45,13 +47,13 @@ contract FreezeTokensWallet {
 }
 
 contract TestConfigurator is Ownable {
-  UBCoinToken public token;
+  NODVIXToken public token;
   PreICO public preICO;
   ICO public ico;
   FreezeTokensWallet public teamTokensWallet;
 
   function setToken(address _token) public onlyOwner {
-    token = UBCoinToken(_token);
+    token = NODVIXToken(_token);
   }
 
   function setPreICO(address _preICO) public onlyOwner {
@@ -68,29 +70,38 @@ contract TestConfigurator is Ownable {
 
   function deploy() public onlyOwner {
     preICO.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
-    preICO.setStart(1519862400);
-    preICO.setPeriod(15);
+    preICO.setStart(1538352000); // 1 Oct 2018 00:00:00 GMT
+    preICO.setPeriod(20);
+    //preICO.addValueBonus(10000000000000000000, 30); // 10 eth - 30%
+    //preICO.addValueBonus(30000000000000000000, 65); // 30 eth - 65%
+    //preICO.addValueBonus(100000000000000000000, 80); // 100 eth - 80%
     preICO.setPrice(33334000000000000000000);
-    preICO.setMinInvestedLimit(100000000000000000);
-    preICO.setHardcap(3000000000000000000);
+    preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH
+    preICO.setHardcap(1000000000000000000000); // 1000 ETH
     preICO.setToken(token);
 
     token.setSaleAgent(preICO);
     preICO.setNextSaleAgent(ico);
 
-    ico.setStart(1519862400);
-    ico.addMilestone(20, 40);
-    ico.addMilestone(20, 20);
+    ico.setStart(1543622400); // 01 Dec 2018 00:00:00 GMT
+    ico.addMilestone(10, 88);
+    ico.addMilestone(10, 37);
+    ico.addMilestone(10, 25);
+    ico.addMilestone(15, 12);
+    ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
+    //ico.addValueBonus(20000000000000000000,30); // 20 eth - 30%
+    //ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
+    //ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
     ico.setPrice(14286000000000000000000);
-    ico.setMinInvestedLimit(100000000000000000);
-    ico.setHardcap(96000000000000000000000);
+    ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
+    ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
     ico.setBountyTokensWallet(0x470a2D1105EaE6aAe879623357F615Ab9cbf906E);
     ico.setReservedTokensWallet(0x093A89bDb5CE905fecb6272ff3ac92f53350a79A);
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
-    ico.setReservedTokensPercent(34);
+    ico.setReservedTokensPercent(9);
     ico.setToken(token);
 
     ico.setTeamTokensWallet(teamTokensWallet);

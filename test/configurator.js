@@ -11,7 +11,7 @@ const should = require('chai')
   .should();
 
 const Configurator = artifacts.require('Configurator.sol');
-const Token = artifacts.require('UBCoinToken.sol');
+const Token = artifacts.require('NODVIXToken.sol');
 const PreICO = artifacts.require('PreICO.sol');
 const ICO = artifacts.require('ICO.sol');
 const TeamTokensWallet = artifacts.require('FreezeTokensWallet.sol');
@@ -69,14 +69,14 @@ contract('Configurator integration test', function (accounts) {
 
   it('preICO and ICO should have start time as described in README', async function () {
     const preicoStart = await preico.start();
-    preicoStart.should.bignumber.equal((new Date('10 Mar 2018 00:00:00 GMT')).getTime() / 1000);
+    preicoStart.should.bignumber.equal((new Date('1 Oct 2018 00:00:00 GMT')).getTime() / 1000);
     const icoStart = await ico.start();
-    icoStart.should.bignumber.equal((new Date('02 Apr 2018 00:00:00 GMT')).getTime() / 1000);
+    icoStart.should.bignumber.equal((new Date('1 Dec 2018 00:00:00 GMT')).getTime() / 1000);
   });
 
   it ('presale period should be as described in README', async function () {
     const period = await preico.period();
-    period.should.bignumber.equal(22);
+    period.should.bignumber.equal(20);
   });
 
   it ('preICO and ICO should have price as described in README', async function () {
@@ -88,16 +88,16 @@ contract('Configurator integration test', function (accounts) {
 
   it ('preICO and ICO should have hardcap as described in README', async function () {
     const preicoHardcap = await preico.hardcap();
-    preicoHardcap.should.bignumber.equal(ether(8500));
+    preicoHardcap.should.bignumber.equal(ether(1000));
     const icoHardcap = await ico.hardcap();
-    icoHardcap.should.bignumber.equal(ether(96000));
+    icoHardcap.should.bignumber.equal(ether(20000));
   });
 
   it ('preICO and ICO should have minimal insvested limit as described in README', async function () {
     const preicoMinInvest = await ico.minInvestedLimit();
-    preicoMinInvest.should.bignumber.equal(ether(0.1));
+    preicoMinInvest.should.bignumber.equal(ether(0.01));
     const icoMinInvest = await ico.minInvestedLimit();
-    icoMinInvest.should.bignumber.equal(ether(0.1));
+    icoMinInvest.should.bignumber.equal(ether(0.01));
   });
 
   it ('bounty, team, reserved percent as described in README', async function () {
@@ -106,7 +106,7 @@ contract('Configurator integration test', function (accounts) {
     const bountyPercent = await ico.bountyTokensPercent();
     bountyPercent.should.bignumber.equal(4);
     const reservedPercent = await ico.reservedTokensPercent();
-    reservedPercent.should.bignumber.equal(34);
+    reservedPercent.should.bignumber.equal(9);
   });
 
   it ('preICO and ICO should have wallets as described in README', async function () {

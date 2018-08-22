@@ -1,14 +1,17 @@
 pragma solidity ^0.4.18;
 
 import './CommonSale.sol';
+import './ValueBonusFeature.sol';
 import './NextSaleAgentFeature.sol';
 
-contract PreICO is NextSaleAgentFeature, CommonSale {
+contract PreICO is ValueBonusFeature, NextSaleAgentFeature, CommonSale {
 
   uint public period;
 
   function calculateTokens(uint _invested) internal returns(uint) {
-    return _invested.mul(price).div(1 ether);
+    uint tokens = _invested.mul(price).div(1 ether);
+    uint valueBonusTokens = getValueBonusTokens(tokens, _invested);
+    return tokens.add(valueBonusTokens);
   }
 
   function setPeriod(uint newPeriod) public onlyOwner {

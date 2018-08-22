@@ -1,6 +1,7 @@
 import ether from '../helpers/ether';
 import tokens from '../helpers/tokens';
 import {advanceBlock} from '../helpers/advanceToBlock';
+import {increaseTimeTo, duration} from '../helpers/increaseTime';
 import latestTime from '../helpers/latestTime';
 import EVMRevert from '../helpers/EVMRevert';
 
@@ -13,9 +14,9 @@ export default function (Token, Crowdsale, wallets) {
   let token;
   let crowdsale;
   const valuebonuses = [
-    {value: 20000000000000000000, bonus: 30},
-    {value: 50000000000000000000, bonus: 65},
-    {value: 100000000000000000000, bonus: 100}
+    {value: 10000000000000000000, bonus: 30},
+    {value: 30000000000000000000, bonus: 65},
+    {value: 100000000000000000000, bonus: 80}
   ];
 
   before(async function () {
@@ -29,24 +30,14 @@ export default function (Token, Crowdsale, wallets) {
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
     await crowdsale.setStart(latestTime());
+    await crowdsale.setPeriod(this.period);
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addValueBonus(20000000000000000000,30); // 20 eth - 30%
-    await crowdsale.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-    await crowdsale.addValueBonus(100000000000000000000,100); // 100 eth - 100%
-    await crowdsale.addMilestone(10, 0);
-    await crowdsale.addMilestone(10, 0);
-    await crowdsale.addMilestone(10, 0);
-    await crowdsale.addMilestone(15, 0);
-    await crowdsale.addMilestone(15, 0);
-    await crowdsale.addMilestone(20, 0);
+    await crowdsale.addValueBonus(10000000000000000000,30); // 10 eth - 30%
+    await crowdsale.addValueBonus(30000000000000000000,65); // 30 eth - 65%
+    await crowdsale.addValueBonus(100000000000000000000,80); // 100 eth - 80%
     await crowdsale.setWallet(this.wallet);
-    await crowdsale.setBountyTokensWallet(this.BountyTokensWallet);
-    await crowdsale.setReservedTokensWallet(this.ReservedTokensWallet);
-    await crowdsale.setTeamTokensPercent(this.TeamTokensPercent);
-    await crowdsale.setBountyTokensPercent(this.BountyTokensPercent);
-    await crowdsale.setReservedTokensPercent(this.ReservedTokensPercent);
   });
 
   valuebonuses.forEach((valuebonus, i) => {
@@ -59,7 +50,7 @@ export default function (Token, Crowdsale, wallets) {
   });
 
   it('should add value bonus if it is active only', async function () {
-    const investment = ether(21);
+    const investment = ether(11);
 
     await crowdsale.setActiveValueBonus(false);
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});

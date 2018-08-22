@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 import './ownership/Ownable.sol';
 import './MintableToken.sol';
-import './UBCoinToken.sol';
+import './NODVIXToken.sol';
 import './PreICO.sol';
 import './ICO.sol';
 import './FreezeTokensWallet.sol';
@@ -28,26 +28,26 @@ contract MigrationConfigurator is Ownable {
   function deploy() public onlyOwner {
     ico = new ICO();
 
-    ico.addMilestone(20, 40);
-    ico.addMilestone(20, 25);
-    ico.addMilestone(20, 20);
-    ico.addMilestone(20, 15);
-    ico.addMilestone(20, 8);
-    ico.addMilestone(4, 0);
-    ico.addValueBonus(20000000000000000000,50);
-    ico.addValueBonus(50000000000000000000,65);
-    ico.addValueBonus(300000000000000000000,80);
-    ico.setMinInvestedLimit(100000000000000000);
+    ico.addMilestone(10, 88);
+    ico.addMilestone(10, 37);
+    ico.addMilestone(10, 25);
+    ico.addMilestone(15, 12);
+    ico.addMilestone(15, 7);
+    ico.addMilestone(20, 0);
+    ico.addValueBonus(20000000000000000000,30); // 20 eth - 30%
+    ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
+    ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
     ico.setPrice(14286000000000000000000);
     ico.setWallet(0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F);
     ico.setBountyTokensWallet(0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6);
     ico.setReservedTokensWallet(0xE1D1898660469797B22D348Ff67d54643d848295);
-    ico.setStart(1522627200); // 02 Apr 2018 00:00:00 GMT
-    ico.setHardcap(96000000000000000000000);
+    ico.setStart(1543622400); // 01 Dec 2018 00:00:00 GMT
+    ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
-    ico.setReservedTokensPercent(34);
+    ico.setReservedTokensPercent(9);
 
     teamTokensWallet = new FreezeTokensWallet();
     teamTokensWallet.setStartLockPeriod(180);
