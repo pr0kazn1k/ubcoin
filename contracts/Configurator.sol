@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 import './ownership/Ownable.sol';
 import './MintableToken.sol';
-import './UBCoinToken.sol';
+import './NODVIXToken.sol';
 import './PreICO.sol';
 import './ICO.sol';
 import './FreezeTokensWallet.sol';
@@ -19,7 +19,7 @@ contract Configurator is Ownable {
 
   function deploy() public onlyOwner {
 
-    token = new UBCoinToken();
+    token = new NODVIXToken();
 
     preICO = new PreICO();
 

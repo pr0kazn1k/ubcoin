@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 import './ownership/Ownable.sol';
 
-contract UBCoinToken {
+contract NODVIXToken {
   function setSaleAgent(address newSaleAgent) public;
   function transferOwnership(address newOwner) public;
 }
@@ -45,13 +45,13 @@ contract FreezeTokensWallet {
 }
 
 contract TestConfigurator is Ownable {
-  UBCoinToken public token;
+  NODVIXToken public token;
   PreICO public preICO;
   ICO public ico;
   FreezeTokensWallet public teamTokensWallet;
 
   function setToken(address _token) public onlyOwner {
-    token = UBCoinToken(_token);
+    token = NODVIXToken(_token);
   }
 
   function setPreICO(address _preICO) public onlyOwner {

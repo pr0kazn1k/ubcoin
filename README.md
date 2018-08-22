@@ -1,10 +1,10 @@
-![UBCoin](logo.png "UBCoin")
+![NODVIXToken](logo.png "NODVIXToken")
 
-# UBCoin smart contract
+# NODVIXToken smart contract
 
 * _Standard_        : [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
-* _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : UBCoin 
-* _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_          : UBC
+* _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : NODVIX 
+* _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_          : NDVX
 * _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_        : 18
 * _Emission_        : Mintable
 * _Crowdsales_      : 2
@@ -18,7 +18,7 @@ There is a special function to return 3rd party tokens that were sent by mistake
 Each stage has a direct minting function in wei. This is made to support the external payment gateways.
 
 ### Contracts contains
-1. _UBCoin_ - Token contract
+1. _NODVIX_ - Token contract
 2. _PreICO_ - PreICO contract
 3. _ICO_ - ICO contract
 4. _Configurator_ - contract with main configuration for production

@@ -10,7 +10,7 @@ import valuebonus from './ico/valuebonus';
 import bounty from './ico/bounty';
 import additional from './ico/additional';
 
-const token = artifacts.require('UBCoinToken.sol');
+const token = artifacts.require('NODVIXToken.sol');
 const crowdsale = artifacts.require('ICO.sol');
 const teamwallet = artifacts.require('FreezeTokensWallet.sol');
 

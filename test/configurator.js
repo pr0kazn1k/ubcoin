@@ -11,7 +11,7 @@ const should = require('chai')
   .should();
 
 const Configurator = artifacts.require('Configurator.sol');
-const Token = artifacts.require('UBCoinToken.sol');
+const Token = artifacts.require('NODVIXToken.sol');
 const PreICO = artifacts.require('PreICO.sol');
 const ICO = artifacts.require('ICO.sol');
 const TeamTokensWallet = artifacts.require('FreezeTokensWallet.sol');

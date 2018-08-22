@@ -813,13 +813,13 @@ contract ReceivingContractCallback {
 
 }
 
-// File: contracts/UBCoinToken.sol
+// File: contracts/NODVIXToken.sol
 
-contract UBCoinToken is MintableToken {
+contract NODVIXToken is MintableToken {
 
-  string public constant name = "UBCoin";
+  string public constant name = "NODVIX";
 
-  string public constant symbol = "UBC";
+  string public constant symbol = "NDVX";
 
   uint32 public constant decimals = 18;
 

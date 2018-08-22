@@ -4,21 +4,21 @@ import mintable from './token/mintable';
 import ownable from './token/ownable';
 import standard from './token/standard';
 
-const token = artifacts.require('UBCoinToken.sol');
+const token = artifacts.require('NODVIXToken.sol');
 
-contract('UBCoin - BasicToken test', function (accounts) {
+contract('NODVIXToken - BasicToken test', function (accounts) {
   basic(token, accounts);
 });
-contract('UBCoin - StandardToken test', function (accounts) {
+contract('NODVIXToken - StandardToken test', function (accounts) {
   standard(token, accounts);
 });
-contract('UBCoin - Mintable test', function (accounts) {
+contract('NODVIXToken - Mintable test', function (accounts) {
   mintable(token, accounts);
 });
-contract('UBCoin - Ownable test', function (accounts) {
+contract('NODVIXToken - Ownable test', function (accounts) {
   ownable(token, accounts);
 });
-contract('UBCoin - Additional conditions test', function (accounts) {
+contract('NODVIXToken - Additional conditions test', function (accounts) {
   additional(token, accounts);
 });
 

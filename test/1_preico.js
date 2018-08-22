@@ -7,7 +7,7 @@ import capped from './preico/capped';
 import common from './preico/common';
 import additional from './preico/additional';
 
-const token = artifacts.require('UBCoinToken.sol');
+const token = artifacts.require('NODVIXToken.sol');
 const crowdsale = artifacts.require('PreICO.sol');
 
 contract('PreICO - common test', function (accounts) {

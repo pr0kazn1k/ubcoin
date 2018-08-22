@@ -5,7 +5,7 @@ import {duration} from './helpers/increaseTime';
 
 import callback from './testcallback/callback';
 
-const token = artifacts.require('UBCoinToken.sol');
+const token = artifacts.require('NODVIXToken.sol');
 const crowdsale = artifacts.require('ICO.sol');
 const callbacktest = artifacts.require('CallbackTest.sol');
 

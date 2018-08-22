@@ -4,7 +4,7 @@ import './ownership/Ownable.sol';
 import './MintableToken.sol';
 import './ICO.sol';
 import './FreezeTokensWallet.sol';
-import './UBCoinToken.sol';
+import './NODVIXToken.sol';
 
 contract ICOConfigurator is Ownable {
 
@@ -16,7 +16,7 @@ contract ICOConfigurator is Ownable {
 
   function deploy() public onlyOwner {
 
-    token = UBCoinToken(0x2D3E7D4870a51b918919E7B851FE19983E4c38d5);
+    token = NODVIXToken(0x2D3E7D4870a51b918919E7B851FE19983E4c38d5);
 
     ico = new ICO();
 
