@@ -46,7 +46,7 @@ contract('ICO - additional features test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('20 May 2018 00:00:00 GMT');
+  this.start = unixTime('25 Oct 2019 00:00:00 GMT');
   this.period = 104;
   this.price = tokens(14286);
   this.hardcap = ether(96000);
