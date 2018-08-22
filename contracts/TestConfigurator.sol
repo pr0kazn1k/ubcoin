@@ -90,7 +90,7 @@ contract TestConfigurator is Ownable {
     ico.setReservedTokensWallet(0x093A89bDb5CE905fecb6272ff3ac92f53350a79A);
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
-    ico.setReservedTokensPercent(34);
+    ico.setReservedTokensPercent(9);
     ico.setToken(token);
 
     ico.setTeamTokensWallet(teamTokensWallet);
