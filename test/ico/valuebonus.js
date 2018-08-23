@@ -122,8 +122,18 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.insertValueBonus(0, 40000000000000000000, 15, {from: owner}).should.be.rejectedWith(EVMRevert);
   });
 
+  it('should correctly change value bonus TEST', async function () {
+    console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
+    await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
+    console.log('crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});');
+    console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
+    await crowdsale.addValueBonus(ether(1), 20);
+    console.log('await crowdsale.addValueBonus(ether(1), 20);');
+    console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
+  });
+
   it('should correctly change value bonus', async function () {
-    const investment = ether(1);
+    const investment = ether(2);
     const owner = await crowdsale.owner();
 
       console.log('!b', await  crowdsale.getValueBonus(0));
@@ -134,7 +144,7 @@ export default function (Token, Crowdsale, wallets) {
 
     await crowdsale.sendTransaction({value: investment, from: wallets[5]});
     const balance = await token.balanceOf(wallets[5]);
-    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
+    const tokenamount = this.price.mul(investment).div(ether(2)).times(1 + 15 / this.PercentRate);
 
     console.log('!!' , balance, tokenamount);
     console.log('!b', await  crowdsale.getValueBonus(0));
