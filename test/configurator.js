@@ -106,7 +106,7 @@ contract('Configurator integration test', function (accounts) {
     const bountyPercent = await ico.bountyTokensPercent();
     bountyPercent.should.bignumber.equal(4);
     const reservedPercent = await ico.reservedTokensPercent();
-    reservedPercent.should.bignumber.equal(34);
+    reservedPercent.should.bignumber.equal(9);
   });
 
   it ('preICO and ICO should have wallets as described in README', async function () {
