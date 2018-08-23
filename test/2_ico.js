@@ -51,9 +51,6 @@ function config() {
   this.price = tokens(14286);
   this.hardcap = ether(20000);
   this.minInvestedLimit = ether(0.01);
-  this.addValueBonus(20000000000000000000,50); // 20 eth - 50%
-  this.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-  this.addValueBonus(100000000000000000000,100); // 100 eth - 100%
   this.wallet = '0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F';
   this.BountyTokensWallet = '0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6';
   this.ReservedTokensWallet = '0xE1D1898660469797B22D348Ff67d54643d848295';
