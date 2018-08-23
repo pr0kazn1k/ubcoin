@@ -82,6 +82,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[4]});
     const balance = await token.balanceOf(wallets[4]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 50 / this.PercentRate);
+
+      console.log('!!' , balance, tokenamount);
+
     balance.should.be.bignumber.equal(tokenamount);
   });
 
@@ -93,6 +96,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[9]});
     const balance = await token.balanceOf(wallets[9]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 85 / this.PercentRate);
+
+      console.log('!!' , balance, tokenamount);
+
     balance.should.be.bignumber.equal(tokenamount);
 
     await crowdsale.addValueBonus(1000000000000000000, 10, {from: owner}).should.be.rejectedWith(EVMRevert);
@@ -107,6 +113,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[6]});
     const balance = await token.balanceOf(wallets[6]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 55 / this.PercentRate);
+
+    console.log('!!' , balance, tokenamount);
+
     balance.should.be.bignumber.equal(tokenamount);
 
     await crowdsale.insertValueBonus(0, 1000000000000000000, 55, {from: owner}).should.be.rejectedWith(EVMRevert);
@@ -121,6 +130,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[5]});
     const balance = await token.balanceOf(wallets[5]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
+
+    console.log('!!' , balance, tokenamount);
+
     balance.should.be.bignumber.equal(tokenamount);
   });
 
@@ -132,6 +144,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
     const tokenamount = this.price.mul(investment).div(ether(1));
+
+    console.log('!!' , balance, tokenamount);
+
     balance.should.be.bignumber.equal(tokenamount);
   });
 
