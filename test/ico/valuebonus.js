@@ -115,6 +115,8 @@ export default function (Token, Crowdsale, wallets) {
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 55 / this.PercentRate);
 
     console.log('!!' , balance, tokenamount);
+      10743072 0000
+        885732 0000
 
     balance.should.be.bignumber.equal(tokenamount);
 
@@ -137,16 +139,13 @@ export default function (Token, Crowdsale, wallets) {
   });
 
   it('should correctly clear value bonuses', async function () {
-    const investment = ether(300);
+    const investment = ether(100);
     const owner = await crowdsale.owner();
 
     await crowdsale.clearValueBonuses({from: owner});
     await crowdsale.sendTransaction({value: investment, from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
     const tokenamount = this.price.mul(investment).div(ether(1));
-
-    console.log('!!' , balance, tokenamount);
-
     balance.should.be.bignumber.equal(tokenamount);
   });
 

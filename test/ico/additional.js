@@ -57,7 +57,9 @@ export default function (Token, Crowdsale, Teamwallet, wallets) {
     const owner = await crowdsale.owner();
     await crowdsale.mintTokensByETHExternal(wallets[4], ether(1), {from: owner}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[4]);
-    console.log('!!! ' + balance + ' ' + this.price.times(1.4));
+
+    console.log('!!! ' , balance , this.price.times(1.4), this.price, this.price.times(2));
+
     balance.should.bignumber.equal(this.price.times(1.4));
   });
 
@@ -66,7 +68,9 @@ export default function (Token, Crowdsale, Teamwallet, wallets) {
     await crowdsale.setDirectMintAgent(wallets[2], {from: owner});
     await crowdsale.mintTokensByETHExternal(wallets[5], ether(1), {from: wallets[2]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[5]);
-    console.log('!!! ' + balance + ' ' + this.price.times(1.4));
+
+    console.log('!!! ' , balance , this.price.times(1.4), this.price, this.price.times(2));
+
     balance.should.bignumber.equal(this.price.times(1.4));
   });
 
