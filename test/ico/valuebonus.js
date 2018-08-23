@@ -128,7 +128,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
     console.log('crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});');
     console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
-    await crowdsale.addValueBonus(ether(1), 20);
+    await crowdsale.addValueBonus(ether(1), 20, {from: owner});
     console.log('await crowdsale.addValueBonus(ether(1), 20);');
     console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
   });
