@@ -123,6 +123,7 @@ export default function (Token, Crowdsale, wallets) {
   });
 
   it('should correctly change value bonus TEST', async function () {
+      const owner = await crowdsale.owner();
     console.log('crowdsale.getValueBonus(0)', await crowdsale.getValueBonus(0));
     await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
     console.log('crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});');
