@@ -126,12 +126,20 @@ export default function (Token, Crowdsale, wallets) {
     const investment = ether(1);
     const owner = await crowdsale.owner();
 
+      console.log('!b', await  crowdsale.getValueBonus(0));
+
     await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
+
+      console.log('!b', await  crowdsale.getValueBonus(0));
+
     await crowdsale.sendTransaction({value: investment, from: wallets[5]});
     const balance = await token.balanceOf(wallets[5]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
 
-    console.log('!!' , balance, tokenamount);
+    console.log('!!' , balance, tokenamount, t);
+    console.log('!b', await  crowdsale.getValueBonus(0));
+      // 268576800 - цена + 88%
+      // 164289000 - цена + 15%
 
     balance.should.be.bignumber.equal(tokenamount);
   });
