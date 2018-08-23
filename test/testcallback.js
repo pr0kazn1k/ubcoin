@@ -19,14 +19,14 @@ function config() {
   this.start = unixTime('25 Oct 2019 00:00:00 GMT');
   this.period = 60;
   this.price = tokens(14286);
-  this.hardcap = ether(96000);
-  this.minInvestedLimit = ether(0.1);
+  this.hardcap = ether(20000);
+  this.minInvestedLimit = ether(0.01);
   this.wallet = '0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F';
   this.BountyTokensWallet = '0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6';
   this.ReservedTokensWallet = '0xE1D1898660469797B22D348Ff67d54643d848295';
   this.TeamTokensPercent = 12;
   this.BountyTokensPercent = 4;
-  this.ReservedTokensPercent = 34;
+  this.ReservedTokensPercent = 9;
 
   // variables for additional testing convinience
   this.end = this.start + duration.days(this.period);
