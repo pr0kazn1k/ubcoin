@@ -138,7 +138,7 @@ export default function (Token, Crowdsale, wallets) {
 
     console.log('!!' , balance, tokenamount);
     console.log('!b', await  crowdsale.getValueBonus(0));
-    const t = investment.mul(price).div(ether(1));
+    const t = investment.mul(this.price).div(ether(1));
     console.log('!t', await  crowdsale.getValueBonusTokens(t, investment) );
       // 268576800 - цена + 88%
       // 164289000 - цена + 15%
