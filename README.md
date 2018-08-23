@@ -90,11 +90,11 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Wallet_                      : 0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F 
 
 ##### Milestones
-1. 10 days, 1 ETH = 15 000 Tokens
-2. 10 days, 1 ETH = 11 000 Tokens
-2. 10 days, 1 ETH = 10 000 Tokens
-2. 15 days, 1 ETH =  9 000 Tokens
-2. 15 days, 1 ETH =  8 500 Tokens
+1. 10 days, 1 ETH = 15 040 Tokens (Technically +88%)
+2. 10 days, 1 ETH = 10 960 Tokens (Technically +37%)
+2. 10 days, 1 ETH = 10 000 Tokens (Technically +25%)
+2. 15 days, 1 ETH =  8 960 Tokens (Technically +12%)
+2. 15 days, 1 ETH =  8 560 Tokens (Technically +7%)
 3. 20 days, 1 ETH =  8 000 Tokens 
 
 ##### Value bonus
