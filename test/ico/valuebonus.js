@@ -115,8 +115,6 @@ export default function (Token, Crowdsale, wallets) {
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 55 / this.PercentRate);
 
     console.log('!!' , balance, tokenamount);
-      10743072 0000
-        885732 0000
 
     balance.should.be.bignumber.equal(tokenamount);
 
