@@ -65,14 +65,12 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
     const balance1 = await token.balanceOf(wallets[7]);
     const tokenamount1 = this.price.mul(investment).div(ether(1));
-    console.log('!!', '1 st', balance1, tokenamount1);
     balance1.should.be.bignumber.equal(tokenamount1);
 
     await crowdsale.setActiveValueBonus(true);
     await crowdsale.sendTransaction({value: investment, from: wallets[8]});
     const balance2 = await token.balanceOf(wallets[8]);
     const tokenamount2 = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
-      console.log('!!', '2 st', balance2, tokenamount2);
     balance2.should.be.bignumber.equal(tokenamount2);
   });
 
@@ -83,7 +81,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.removeValueBonus(1, {from: owner});
     await crowdsale.sendTransaction({value: investment, from: wallets[4]});
     const balance = await token.balanceOf(wallets[4]);
-    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 65 / this.PercentRate);
+    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
 
     console.log('!!!', balance, tokenamount);
 
