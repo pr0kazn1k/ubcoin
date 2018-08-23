@@ -117,22 +117,13 @@ export default function (Token, Crowdsale, wallets) {
 
 
   it('should correctly change value bonus', async function () {
-      const investment = ether(1);
-      const owner = await crowdsale.owner();
+    const investment = ether(1);
+    const owner = await crowdsale.owner();
 
-      await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
-      await crowdsale.sendTransaction({value: investment, from: wallets[5]});
-      const balance = await token.balanceOf(wallets[5]);
-      const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
-      balance.should.be.bignumber.equal(tokenamount);
-
-    console.log('!!!!!' , balance, tokenamount);
-    //console.log('!b', await  crowdsale.getValueBonus(0));
-    //const t = investment.mul(this.price).div(ether(1));
-    //console.log('!t', await  crowdsale.getValueBonusTokens(t, investment) );
-      // 328578000 - цена + 88%
-      // 164289000 - цена + 15%
-
+    await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
+    await crowdsale.sendTransaction({value: investment, from: wallets[5]});
+    const balance = await token.balanceOf(wallets[5]);
+    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
     balance.should.be.bignumber.equal(tokenamount);
   });
 
