@@ -40,9 +40,9 @@ contract Configurator is Ownable {
     ico.addMilestone(15, 12);
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    ico.addValueBonus(20000000000000000000,50); // 20 eth - 50%
-    ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-    ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    //ico.addValueBonus(20000000000000000000,50); // 20 eth - 50%
+    //ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
+    //ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
     ico.setPrice(14286000000000000000000);
