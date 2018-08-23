@@ -85,6 +85,9 @@ export default function (Token, Crowdsale, Teamwallet, wallets) {
   it('should assign tokens to sender', async function () {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
     const balance = await token.balanceOf(wallets[3]);
+
+    console.log('!!', balance, this.price.times(1.88));
+
     balance.should.be.bignumber.equal(this.price.times(1.88));
   });
 
