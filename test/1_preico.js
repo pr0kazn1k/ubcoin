@@ -5,6 +5,7 @@ import {duration} from './helpers/increaseTime';
 
 import capped from './preico/capped';
 import common from './preico/common';
+import valuebonus from './preico/valuebonus';
 import additional from './preico/additional';
 
 const token = artifacts.require('NODVIXToken.sol');
@@ -18,6 +19,11 @@ contract('PreICO - common test', function (accounts) {
 contract('PreICO - capped crowdsale test', function (accounts) {
   before(config);
   capped(token, crowdsale, accounts);
+});
+
+contract('PreICO - value bonus test', function (accounts) {
+    before(config);
+    valuebonus(token, crowdsale, accounts);
 });
 
 contract('PreICO - additional features test', function (accounts) {
