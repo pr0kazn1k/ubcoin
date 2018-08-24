@@ -49,7 +49,7 @@ export default function (Token, Crowdsale, wallets) {
   });*/
 
   it('should add value bonus if it is active only', async function () {
-    //const investment = ether(21);
+    const investment = ether(11);
       const owner = await crowdsale.owner();
 
       console.log('TEST!!!!');
@@ -59,13 +59,13 @@ export default function (Token, Crowdsale, wallets) {
     console.log(await crowdsale.getValueBonus(1));
     console.log(await crowdsale.getValueBonus(2));
 
-    /*await crowdsale.setActiveValueBonus(false);
+    await crowdsale.setActiveValueBonus(false);
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
     const balance1 = await token.balanceOf(wallets[7]);
     const tokenamount1 = this.price.mul(investment).div(ether(1));
     balance1.should.be.bignumber.equal(tokenamount1);
 
-    await crowdsale.setActiveValueBonus(true);
+    /*await crowdsale.setActiveValueBonus(true);
     await crowdsale.sendTransaction({value: investment, from: wallets[8]});
     const balance2 = await token.balanceOf(wallets[8]);
     const tokenamount2 = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
