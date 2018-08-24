@@ -27,7 +27,7 @@ contract('PreICO - additional features test', function (accounts) {
 
 function config() {
   // variables list based on info from README
-  this.start = unixTime('1 Dec 2018 00:00:00 GMT');
+  this.start = unixTime('1 Oct 2018 00:00:00 GMT');
   this.period = 20;
   this.price = tokens(33334);
   this.hardcap = ether(1000);
