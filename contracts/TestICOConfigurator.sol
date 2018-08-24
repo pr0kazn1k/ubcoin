@@ -14,6 +14,7 @@ contract ICO {
   function setPrice(uint newPrice) public;
   function setMinInvestedLimit(uint newMinInvestedLimit) public;
   function setHardcap(uint newHardcap) public;
+  function getValueBonusTokens(uint tokens, uint invested) public;
   function setWallet(address newWallet) public;
   function setTeamTokensWallet(address newTeamTokensWallet) public;
   function setBountyTokensWallet (address newBountyWallet) public;
@@ -59,9 +60,9 @@ contract TestICOConfigurator is Ownable {
     ico.addMilestone(15, 12);
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    //ico.addValueBonus(20000000000000000000,30); // 20 eth - 30%
-    //ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-    //ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    ico.addValueBonus(20000000000000000000,30); // 20 eth - 30%
+    ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
+    ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setPrice(14286000000000000000000);
     ico.setHardcap(20000000000000000000000); // 20 000 ETH
