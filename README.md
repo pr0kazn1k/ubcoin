@@ -71,7 +71,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 #### PreICO
 * _Minimal insvested limit_     : 50 ETH
 * _Base price_                  : 1 ETH = 24 000 Tokens
-* _Hardcap_                     : 1 00 ETH
+* _Hardcap_                     : 1 000 ETH
 * _Period_                      : 20 days
 * _Start_                       : 10 Oct 2018 00:00:00 GMT
 * _Wallet_                      : 0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01
