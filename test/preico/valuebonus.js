@@ -50,10 +50,11 @@ export default function (Token, Crowdsale, wallets) {
 
   it('should add value bonus if it is active only', async function () {
     //const investment = ether(21);
+      const owner = await crowdsale.owner();
 
       console.log('TEST!!!!');
 
-    //await crowdsale.addValueBonus(10000000000000000000,30);
+    await crowdsale.addValueBonus(10000000000000000000,30, {from: owner}).should.be.rejectedWith(EVMRevert);
     console.log(await crowdsale.getValueBonus(0));
     console.log(await crowdsale.getValueBonus(1));
     console.log(await crowdsale.getValueBonus(2));
