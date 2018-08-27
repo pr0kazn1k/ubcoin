@@ -24,7 +24,7 @@ export default function (Token, Crowdsale, wallets) {
     crowdsale = await Crowdsale.new();
     await token.setSaleAgent(crowdsale.address);
     await crowdsale.setToken(token.address);
-    await crowdsale.setStart(tlaestTime());
+    await crowdsale.setStart(latestTime());
     await crowdsale.setPeriod(this.period);
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
