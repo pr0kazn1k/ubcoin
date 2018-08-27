@@ -42,6 +42,7 @@ export default function (Token, Crowdsale, wallets) {
 
   valuebonuses.forEach((valuebonus, i) => {
     it(`should add ${valuebonus.bonus}% bonus for investment over ${valuebonus.value / 1000000000000000000} eth`, async function () {
+      await increaseTimeTo(this.start + duration.seconds(2));
       await crowdsale.sendTransaction({value: valuebonus.value, from: wallets[i]});
       const balance = await token.balanceOf(wallets[i]);
       const tokenamount = this.price.mul(valuebonus.value).div(ether(1)).times(1 + valuebonus.bonus / this.PercentRate);
