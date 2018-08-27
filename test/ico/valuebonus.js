@@ -61,6 +61,9 @@ export default function (Token, Crowdsale, wallets) {
   it('should add value bonus if it is active only', async function () {
     const investment = ether(21);
 
+      const b = await token.balanceOf(wallets[7]);
+      console.log(b, 'bal', wallets[7]);
+
     await crowdsale.setActiveValueBonus(false);
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
     const balance1 = await token.balanceOf(wallets[7]);
