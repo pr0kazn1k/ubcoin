@@ -74,5 +74,4 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
   });
 
-
 }
