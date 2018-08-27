@@ -41,7 +41,7 @@ export default function (Token, Crowdsale, wallets) {
 
   valuebonuses.forEach((valuebonus, i) => {
     it(`should add ${valuebonus.bonus}% bonus for investment over ${valuebonus.value / 1000000000000000000} eth`, async function () {
-      await crowdsale.sendTransaction({value: valuebonus.value, from: wallets[i]});
+      await crowdsale.sendTransaction({value: valuebonus.value, from: wallets[i]}).should.be.fulfilled;
       const balance = await token.balanceOf(wallets[i]);
       const tokenamount = this.price.mul(valuebonus.value).div(ether(1)).times(1 + valuebonus.bonus / this.PercentRate);
       balance.should.be.bignumber.equal(tokenamount);
@@ -52,13 +52,13 @@ export default function (Token, Crowdsale, wallets) {
     const investment = ether(11);
 
     await crowdsale.setActiveValueBonus(false);
-    await crowdsale.sendTransaction({value: investment, from: wallets[7]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[7]}).should.be.fulfilled;
     const balance1 = await token.balanceOf(wallets[7]);
     const tokenamount1 = this.price.mul(investment).div(ether(1));
     balance1.should.be.bignumber.equal(tokenamount1);
 
     await crowdsale.setActiveValueBonus(true);
-    await crowdsale.sendTransaction({value: investment, from: wallets[8]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[8]}).should.be.fulfilled;
     const balance2 = await token.balanceOf(wallets[8]);
     const tokenamount2 = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
     balance2.should.be.bignumber.equal(tokenamount2);
@@ -69,7 +69,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
 
     await crowdsale.removeValueBonus(1, {from: owner});
-    await crowdsale.sendTransaction({value: investment, from: wallets[4]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[4]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[4]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
     balance.should.be.bignumber.equal(tokenamount);
@@ -80,7 +80,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
 
     await crowdsale.addValueBonus(350000000000000000000, 85, {from: owner});
-    await crowdsale.sendTransaction({value: investment, from: wallets[9]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[9]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[9]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 85 / this.PercentRate);
 
@@ -95,7 +95,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
 
     await crowdsale.insertValueBonus(0, 40000000000000000000, 55, {from: owner});
-    await crowdsale.sendTransaction({value: investment, from: wallets[6]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[6]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[6]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 55 / this.PercentRate);
 
@@ -111,7 +111,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
 
     await crowdsale.changeValueBonus(0, 1000000000000000000, 15, {from: owner});
-    await crowdsale.sendTransaction({value: investment, from: wallets[5]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[5]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[5]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
     balance.should.be.bignumber.equal(tokenamount);
@@ -122,7 +122,7 @@ export default function (Token, Crowdsale, wallets) {
     const owner = await crowdsale.owner();
 
     await crowdsale.clearValueBonuses({from: owner});
-    await crowdsale.sendTransaction({value: investment, from: wallets[3]});
+    await crowdsale.sendTransaction({value: investment, from: wallets[3]}).should.be.fulfilled;
     const balance = await token.balanceOf(wallets[3]);
     const tokenamount = this.price.mul(investment).div(ether(1));
     balance.should.be.bignumber.equal(tokenamount);
