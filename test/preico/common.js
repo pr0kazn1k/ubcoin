@@ -69,14 +69,9 @@ export default function (Token, Crowdsale, wallets) {
     balance.should.be.bignumber.equal(this.price);
   });
 
-  it('should reject payments after end', async function () {
-    await increaseTimeTo(this.afterEnd);
-    await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
-  });
-
     it('should add value bonus if it is active only', async function () {
-       // const investment = ether(11);
-        //const owner = await crowdsale.owner();
+        // const investment = ether(11);
+        const owner = await crowdsale.owner();
 
         console.log('TEST!!!!');
 
@@ -89,4 +84,11 @@ export default function (Token, Crowdsale, wallets) {
         const balance = await token.balanceOf(wallets[3]);
         balance.should.be.bignumber.equal(this.price);
     });
+
+  it('should reject payments after end', async function () {
+    await increaseTimeTo(this.afterEnd);
+    await crowdsale.sendTransaction({value: ether(1), from: wallets[3]}).should.be.rejectedWith(EVMRevert);
+  });
+
+
 }
