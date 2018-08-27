@@ -53,7 +53,7 @@ export default function (Token, Crowdsale, wallets) {
       const owner = await crowdsale.owner();
 
       console.log('TEST!!!!');
-
+/*
     await crowdsale.addValueBonus(120000000000000000000, 90, {from: owner});
     console.log(await crowdsale.getValueBonus(0));
     console.log(await crowdsale.getValueBonus(1));
@@ -61,9 +61,9 @@ export default function (Token, Crowdsale, wallets) {
 
       await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
       const balance = await token.balanceOf(wallets[3]);
-      balance.should.be.bignumber.equal(this.price);
+      balance.should.be.bignumber.equal(this.price);*/
 
-      /*await crowdsale.setActiveValueBonus(false, {from: owner});
+      await crowdsale.setActiveValueBonus(false, {from: owner});
     console.log('!2');
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
       console.log('!3');
@@ -71,7 +71,7 @@ export default function (Token, Crowdsale, wallets) {
       console.log('!4');
     const tokenamount1 = this.price.mul(investment).div(ether(1));
       console.log('!5');
-    balance1.should.be.bignumber.equal(tokenamount1);*/
+    balance1.should.be.bignumber.equal(tokenamount1);
 
     /*await crowdsale.setActiveValueBonus(true);
     await crowdsale.sendTransaction({value: investment, from: wallets[8]});
