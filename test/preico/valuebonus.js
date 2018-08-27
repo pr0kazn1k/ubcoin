@@ -59,7 +59,10 @@ export default function (Token, Crowdsale, wallets) {
     console.log(await crowdsale.getValueBonus(1));
     console.log(await crowdsale.getValueBonus(2));
 
-    await crowdsale.setActiveValueBonus(false, {from: owner});
+      const b = await token.balanceOf(wallets[7]);
+      console.log(b, 'bal');
+
+      await crowdsale.setActiveValueBonus(false, {from: owner});
     console.log('!2');
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
       console.log('!3');
