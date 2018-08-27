@@ -44,30 +44,14 @@ export default function (Token, Crowdsale, wallets) {
       await crowdsale.sendTransaction({value: valuebonus.value, from: wallets[i]});
       const balance = await token.balanceOf(wallets[i]);
       const tokenamount = this.price.mul(valuebonus.value).div(ether(1)).times(1 + valuebonus.bonus / this.PercentRate);
-
-      console.log(balance, 'b');
-      console.log(tokenamount, 'ta');
-
       balance.should.be.bignumber.equal(tokenamount);
     });
   });
 
   it('should add value bonus if it is active only', async function () {
     const investment = ether(11);
-      const owner = await crowdsale.owner();
 
-      console.log('TEST!!!!');
-/*
-    await crowdsale.addValueBonus(120000000000000000000, 90, {from: owner});
-    console.log(await crowdsale.getValueBonus(0));
-    console.log(await crowdsale.getValueBonus(1));
-    console.log(await crowdsale.getValueBonus(2));
-
-      await crowdsale.sendTransaction({value: ether(1), from: wallets[3]});
-      const balance = await token.balanceOf(wallets[3]);
-      balance.should.be.bignumber.equal(this.price);*/
-
-    await crowdsale.setActiveValueBonus(false, {from: owner});
+    await crowdsale.setActiveValueBonus(false);
     await crowdsale.sendTransaction({value: investment, from: wallets[7]});
     const balance1 = await token.balanceOf(wallets[7]);
     const tokenamount1 = this.price.mul(investment).div(ether(1));
@@ -80,7 +64,7 @@ export default function (Token, Crowdsale, wallets) {
     balance2.should.be.bignumber.equal(tokenamount2);
   });
 
- /* it('should correctly remove value bonus', async function () {
+  it('should correctly remove value bonus', async function () {
     const investment = ether(50);
     const owner = await crowdsale.owner();
 
@@ -142,6 +126,6 @@ export default function (Token, Crowdsale, wallets) {
     const balance = await token.balanceOf(wallets[3]);
     const tokenamount = this.price.mul(investment).div(ether(1));
     balance.should.be.bignumber.equal(tokenamount);
-  });*/
+  });
 
 }
