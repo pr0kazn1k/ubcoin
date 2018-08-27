@@ -80,7 +80,7 @@ export default function (Token, Crowdsale, wallets) {
 
         console.log('TEST!!!!');
 
-        await crowdsale.addValueBonus(120000000000000000000, 90, {from: owner});
+        //await crowdsale.addValueBonus(120000000000000000000, 90, {from: owner});
         console.log(await crowdsale.getValueBonus(0));
         console.log(await crowdsale.getValueBonus(1));
         console.log(await crowdsale.getValueBonus(2));
