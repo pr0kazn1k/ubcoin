@@ -11,14 +11,14 @@ import additional from './preico/additional';
 const token = artifacts.require('NODVIXToken.sol');
 const crowdsale = artifacts.require('PreICO.sol');
 
-contract('PreICO - value bonus test', function (accounts) {
-    before(config);
-    valuebonus(token, crowdsale, accounts);
-});
-
 contract('PreICO - common test', function (accounts) {
   before(config);
   common(token, crowdsale, accounts);
+});
+
+contract('PreICO - value bonus test', function (accounts) {
+    before(config);
+    valuebonus(token, crowdsale, accounts);
 });
 
 contract('PreICO - capped crowdsale test', function (accounts) {
