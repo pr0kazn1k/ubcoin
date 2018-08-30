@@ -94,6 +94,8 @@ export default function (Token, Crowdsale, wallets) {
     const balance = await token.balanceOf(wallets[9]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 85 / this.PercentRate);
 
+      console.log(balance);
+      console.log(tokenamount);
     balance.should.be.bignumber.equal(tokenamount);
 
     await crowdsale.addValueBonus(1000000000000000000, 10, {from: owner}).should.be.rejectedWith(EVMRevert);
@@ -104,10 +106,10 @@ export default function (Token, Crowdsale, wallets) {
     const investment = ether(40);
     const owner = await crowdsale.owner();
 
-    await crowdsale.insertValueBonus(0, 40000000000000000000, 55, {from: owner});
+    await crowdsale.insertValueBonus(0, 40000000000000000000, 20, {from: owner});
     await crowdsale.sendTransaction({value: investment, from: wallets[6]});
     const balance = await token.balanceOf(wallets[6]);
-    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 55 / this.PercentRate);
+    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 20 / this.PercentRate);
 
     balance.should.be.bignumber.equal(tokenamount);
 
