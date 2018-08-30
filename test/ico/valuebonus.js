@@ -81,7 +81,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.removeValueBonus(1, {from: owner});
     await crowdsale.sendTransaction({value: investment, from: wallets[4]});
     const balance = await token.balanceOf(wallets[4]);
-    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 25 / this.PercentRate);
+    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
     balance.should.be.bignumber.equal(tokenamount);
   });
 
