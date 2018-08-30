@@ -94,8 +94,6 @@ export default function (Token, Crowdsale, wallets) {
     const balance = await token.balanceOf(wallets[9]);
     const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 85 / this.PercentRate);
 
-      console.log(balance);
-      console.log(tokenamount);
     balance.should.be.bignumber.equal(tokenamount);
 
     await crowdsale.addValueBonus(1000000000000000000, 10, {from: owner}).should.be.rejectedWith(EVMRevert);
