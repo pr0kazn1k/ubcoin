@@ -87,7 +87,7 @@ export default function (Token, Crowdsale, wallets) {
 
     balance.should.be.bignumber.equal(tokenamount);
 
-    await crowdsale.addValueBonus(1000000000000000000, 10, {from: owner}).should.be.rejectedWith(EVMRevert);
+    await crowdsale.addValueBonus(1000000000000000000, 20, {from: owner}).should.be.rejectedWith(EVMRevert);
     await crowdsale.addValueBonus(360000000000000000000, 55, {from: owner}).should.be.rejectedWith(EVMRevert);
   });
 
