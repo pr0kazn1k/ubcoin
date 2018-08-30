@@ -26,9 +26,9 @@ contract Configurator is Ownable {
     preICO.setWallet(0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01);
     preICO.setStart(1538352000); // 1 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
-    preICO.addValueBonus(10000000000000000000, 30); // 10 eth - 30%
-    preICO.addValueBonus(30000000000000000000, 65); // 30 eth - 65%
-    preICO.addValueBonus(100000000000000000000, 80); // 100 eth - 80%
+    preICO.addValueBonus(10000000000000000000, 15); // 10 eth - 15%
+    preICO.addValueBonus(30000000000000000000, 25); // 30 eth - 25%
+    preICO.addValueBonus(100000000000000000000, 40); // 100 eth - 40%
     preICO.setPrice(33334000000000000000000);
     preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     preICO.setToken(token);
@@ -43,9 +43,9 @@ contract Configurator is Ownable {
     ico.addMilestone(15, 12);
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    ico.addValueBonus(20000000000000000000,30); // 20 eth - 30%
-    ico.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-    ico.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    ico.addValueBonus(20000000000000000000,15); // 20 eth - 15%
+    ico.addValueBonus(50000000000000000000,25); // 50 eth - 25%
+    ico.addValueBonus(100000000000000000000,50); // 100 eth - 50%
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
     ico.setPrice(14286000000000000000000);

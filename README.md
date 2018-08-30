@@ -5,7 +5,7 @@
 * _Standard_        : [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
 * _[Name](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#name)_            : NODVIX 
 * _[Ticker](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#symbol)_          : NDVX
-* _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_        : 18
+* _[Decimals](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md#decimals)_        : 8
 * _Emission_        : Mintable
 * _Crowdsales_      : 2
 * _Fiat dependency_ : No
@@ -77,15 +77,16 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Wallet_                      : 0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01
 
 ##### Value bonus
-* 10 eth - 30%
-* 30 eth - 65%
-* 100 eth - 80%
+* 10 eth - 15%
+* 30 eth - 25%
+* 100 eth - 40%
 
 #### ICO
 * _Minimal insvested limit_     : 0.01 ETH
 * _Techincally base price_      : 1 ETH = 8000 Tokens
 * _Hardcap_                     : 20 000 ETH
-* _Softcap_                     : 700 ETH
+* _Softcap_                     : 1 500 ETH
+* _Period_                      : 80 days
 * _Start_                       : 02 Apr 2019 00:00:00 GMT
 * _Wallet_                      : 0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F 
 
@@ -98,6 +99,6 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 3. 20 days, 1 ETH =  8 000 Tokens 
 
 ##### Value bonus
-* 20 eth - 30%
-* 50 eth - 65%
-* 100 eth - 100%
+* 20 eth - 15%
+* 50 eth - 25%
+* 100 eth - 50%

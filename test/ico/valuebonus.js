@@ -13,9 +13,9 @@ export default function (Token, Crowdsale, wallets) {
   let token;
   let crowdsale;
   const valuebonuses = [
-    {value: 20000000000000000000, bonus: 30},
-    {value: 50000000000000000000, bonus: 65},
-    {value: 100000000000000000000, bonus: 100}
+    {value: 20000000000000000000, bonus: 15},
+    {value: 50000000000000000000, bonus: 25},
+    {value: 100000000000000000000, bonus: 50}
   ];
 
   before(async function () {
@@ -32,9 +32,9 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setPrice(this.price);
     await crowdsale.setHardcap(this.hardcap);
     await crowdsale.setMinInvestedLimit(this.minInvestedLimit);
-    await crowdsale.addValueBonus(20000000000000000000,30); // 20 eth - 30%
-    await crowdsale.addValueBonus(50000000000000000000,65); // 50 eth - 65%
-    await crowdsale.addValueBonus(100000000000000000000,100); // 100 eth - 100%
+    await crowdsale.addValueBonus(20000000000000000000,15); // 20 eth - 15%
+    await crowdsale.addValueBonus(50000000000000000000,25); // 50 eth - 25%
+    await crowdsale.addValueBonus(100000000000000000000,50); // 100 eth - 50%
     await crowdsale.addMilestone(10, 0);
     await crowdsale.addMilestone(10, 0);
     await crowdsale.addMilestone(10, 0);
@@ -70,7 +70,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.setActiveValueBonus(true);
     await crowdsale.sendTransaction({value: investment, from: wallets[8]});
     const balance2 = await token.balanceOf(wallets[8]);
-    const tokenamount2 = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
+    const tokenamount2 = this.price.mul(investment).div(ether(1)).times(1 + 15 / this.PercentRate);
     balance2.should.be.bignumber.equal(tokenamount2);
   });
 
@@ -81,7 +81,7 @@ export default function (Token, Crowdsale, wallets) {
     await crowdsale.removeValueBonus(1, {from: owner});
     await crowdsale.sendTransaction({value: investment, from: wallets[4]});
     const balance = await token.balanceOf(wallets[4]);
-    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 30 / this.PercentRate);
+    const tokenamount = this.price.mul(investment).div(ether(1)).times(1 + 25 / this.PercentRate);
     balance.should.be.bignumber.equal(tokenamount);
   });
 

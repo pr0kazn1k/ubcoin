@@ -821,7 +821,7 @@ contract NODVIXToken is MintableToken {
 
   string public constant symbol = "NDVX";
 
-  uint32 public constant decimals = 18;
+  uint32 public constant decimals = 8;
 
   mapping(address => bool)  public registeredCallbacks;
 
@@ -880,9 +880,9 @@ contract MigrationConfigurator is Ownable {
     ico.addMilestone(20, 15);
     ico.addMilestone(20, 8);
     ico.addMilestone(4, 0);
-    ico.addValueBonus(20000000000000000000,50);
-    ico.addValueBonus(50000000000000000000,65);
-    ico.addValueBonus(300000000000000000000,80);
+    ico.addValueBonus(20000000000000000000,15); // 20 eth - 15%
+    ico.addValueBonus(50000000000000000000,25); // 50 eth - 25%
+    ico.addValueBonus(100000000000000000000,50); // 100 eth - 50%
     ico.setMinInvestedLimit(100000000000000000);
     ico.setToken(token);
     ico.setPrice(14286000000000000000000);
