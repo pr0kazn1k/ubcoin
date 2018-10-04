@@ -1,3 +1,3 @@
 export default function tokens(n) {
-  return new web3.BigNumber(n * 100000000); // Decimals : 8
+  return new web3.BigNumber(web3.toWei(n, 'ether'));
 }
