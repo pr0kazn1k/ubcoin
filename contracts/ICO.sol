@@ -46,7 +46,7 @@ contract ICO is ValueBonusFeature, StagedCrowdsale, CommonSale {
   function calculateTokens(uint _invested) internal returns(uint) {
     uint milestoneIndex = currentMilestone(start);
     Milestone storage milestone = milestones[milestoneIndex];
-    uint tokens = _invested.mul(price).div(100000000);
+    uint tokens = _invested.mul(price).div(1 ether);
     uint valueBonusTokens = getValueBonusTokens(tokens, _invested);
     if(milestone.bonus > 0) {
       tokens = tokens.add(tokens.mul(milestone.bonus).div(percentRate));
