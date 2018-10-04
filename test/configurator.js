@@ -81,9 +81,11 @@ contract('Configurator integration test', function (accounts) {
 
   it ('preICO and ICO should have price as described in README', async function () {
     const preicoPrice = await preico.price();
+
+      console.log(preicoPrice);
+      console.log(tokens(24000));
+
     preicoPrice.should.bignumber.equal(tokens(24000));
-    console.log(preicoPrice);
-    console.log(tokens(24000));
     const icoPrice = await ico.price();
     icoPrice.should.bignumber.equal(tokens(7000));
   });
