@@ -69,7 +69,7 @@ contract('Configurator integration test', function (accounts) {
 
   it('preICO and ICO should have start time as described in README', async function () {
     const preicoStart = await preico.start();
-    preicoStart.should.bignumber.equal((new Date('1 Oct 2018 00:00:00 GMT')).getTime() / 1000);
+    preicoStart.should.bignumber.equal((new Date('11 Oct 2018 00:00:00 GMT')).getTime() / 1000);
     const icoStart = await ico.start();
     icoStart.should.bignumber.equal((new Date('1 Dec 2018 00:00:00 GMT')).getTime() / 1000);
   });
