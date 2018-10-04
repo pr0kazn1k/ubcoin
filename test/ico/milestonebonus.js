@@ -61,6 +61,9 @@ export default function (Token, Crowdsale, wallets) {
 
       console.log(balance);
       console.log(value);
+      console.log(this.price);
+      console.log(this.price.times(1));
+      console.log(milestone.bonus);
 
       balance.should.be.bignumber.equal(value);
     });
