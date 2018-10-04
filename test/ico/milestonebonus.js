@@ -58,13 +58,6 @@ export default function (Token, Crowdsale, wallets) {
       await crowdsale.sendTransaction({value: ether(1), from: wallets[i]});
       const balance = await token.balanceOf(wallets[i]);
       const value = this.price.times(1 + milestone.bonus / 100);
-
-      console.log(balance);
-      console.log(value);
-      console.log(this.price);
-      console.log(this.price.times(1));
-      console.log(milestone.bonus);
-
       balance.should.be.bignumber.equal(value);
     });
   });
