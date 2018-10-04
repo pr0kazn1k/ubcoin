@@ -114,7 +114,7 @@ contract TestConfigurator is Ownable {
 
   function deploy() public onlyOwner {
     preICO.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
-    preICO.setStart(1538352000); // 1 Oct 2018 00:00:00 GMT
+    preICO.setStart(1539216000); // 11 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
     preICO.setPrice(33334000000000000000000);
     preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH

@@ -24,7 +24,7 @@ contract Configurator is Ownable {
     preICO = new PreICO();
 
     preICO.setWallet(0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01);
-    preICO.setStart(1538352000); // 1 Oct 2018 00:00:00 GMT
+    preICO.setStart(1539216000); // 11 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
     preICO.addValueBonus(10000000000000000000, 15); // 10 eth - 15%
     preICO.addValueBonus(30000000000000000000, 25); // 30 eth - 25%
