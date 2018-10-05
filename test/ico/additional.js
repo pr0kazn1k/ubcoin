@@ -91,6 +91,10 @@ export default function (Token, Crowdsale, Teamwallet, wallets) {
     assert.isTrue(started);
     const teamBalance = await teamwallet.startBalance();
     const allTokens = await token.totalSupply();
+
+    console.log(teamBalance);
+    console.log(allTokens);
+
     teamBalance.should.bignumber.equal(allTokens.mul(this.TeamTokensPercent).div(100));
   });
 }
