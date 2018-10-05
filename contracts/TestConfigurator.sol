@@ -72,7 +72,8 @@ contract TestConfigurator is Ownable {
     preICO.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
     preICO.setStart(1539216000); // 11 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
-    preICO.setPrice(2400000000000);
+    //preICO.setPrice(2400000000000);
+    preICO.setPrice(24000000000000000000000);
     preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     preICO.setHardcap(1000000000000000000000); // 1000 ETH
     preICO.setToken(token);
@@ -87,7 +88,8 @@ contract TestConfigurator is Ownable {
     ico.addMilestone(15, 12);
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    ico.setPrice(800000000000);
+    //ico.setPrice(800000000000);
+    ico.setPrice(8000000000000000000000);
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setWallet(0x8fD94be56237EA9D854B23B78615775121Dd1E82);
