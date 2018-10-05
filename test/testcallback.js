@@ -18,7 +18,7 @@ function config() {
   // variables list based on info from README
   this.start = unixTime('25 Oct 2019 00:00:00 GMT');
   this.period = 60;
-  this.price = tokens(14286);
+  this.price = tokens(8000);
   this.hardcap = ether(20000);
   this.minInvestedLimit = ether(0.01);
   this.wallet = '0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F';
