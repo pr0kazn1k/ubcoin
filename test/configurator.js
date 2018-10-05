@@ -89,9 +89,9 @@ contract('Configurator integration test', function (accounts) {
     const icoPrice = await ico.price();
 
       console.log(icoPrice);
-      console.log(tokens(8000));
+      console.log(tokens(7000));
 
-    icoPrice.should.bignumber.equal(tokens(8000));
+    icoPrice.should.bignumber.equal(tokens(7000));
   });
 
   it ('preICO and ICO should have hardcap as described in README', async function () {
