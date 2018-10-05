@@ -309,7 +309,7 @@ contract NODVIXToken is MintableToken {
 
   string public constant symbol = "NDVX";
 
-  uint32 public constant decimals = 8;
+  uint32 public constant decimals = 18;
 
   mapping(address => bool)  public registeredCallbacks;
 
