@@ -61,7 +61,7 @@ contract TestICOConfigurator is Ownable {
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
-    ico.setPrice(8000000000000000000000);
+    ico.setPrice(80000000000000);
     ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setWallet(0x8fd94be56237ea9d854b23b78615775121dd1e82);
     ico.setBountyTokensWallet(0x8Ba7Aa817e5E0cB27D9c146A452Ea8273f8EFF29);
