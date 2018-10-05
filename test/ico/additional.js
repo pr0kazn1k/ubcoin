@@ -94,6 +94,7 @@ export default function (Token, Crowdsale, Teamwallet, wallets) {
 
     console.log(teamBalance);
     console.log(allTokens);
+    console.log(teamBalance.div(allTokens));
 
     teamBalance.should.bignumber.equal(allTokens.mul(this.TeamTokensPercent).div(100));
   });
