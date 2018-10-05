@@ -29,7 +29,7 @@ contract Configurator is Ownable {
     preICO.addValueBonus(10000000000000000000, 15); // 10 eth - 15%
     preICO.addValueBonus(30000000000000000000, 25); // 30 eth - 25%
     preICO.addValueBonus(100000000000000000000, 40); // 100 eth - 40%
-    preICO.setPrice(240000000000000);
+    preICO.setPrice(24000000000000000000000);
     preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     preICO.setToken(token);
     preICO.setHardcap(1000000000000000000000); // 1000 ETH
@@ -48,7 +48,7 @@ contract Configurator is Ownable {
     ico.addValueBonus(100000000000000000000,50); // 100 eth - 50%
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
-    ico.setPrice(80000000000000);
+    ico.setPrice(8000000000000000000000);
     ico.setWallet(0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F);
     ico.setBountyTokensWallet(0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6);
     ico.setReservedTokensWallet(0xE1D1898660469797B22D348Ff67d54643d848295);
