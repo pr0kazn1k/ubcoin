@@ -85,8 +85,12 @@ contract('Configurator integration test', function (accounts) {
       console.log(preicoPrice);
       console.log(tokens(24000));
 
-    preicoPrice.should.bignumber.equal(tokens(24000));
+    //preicoPrice.should.bignumber.equal(tokens(24000));
     const icoPrice = await ico.price();
+
+      console.log(icoPrice);
+      console.log(tokens(7000));
+
     icoPrice.should.bignumber.equal(tokens(7000));
   });
 
