@@ -23,7 +23,7 @@ contract('Configurator integration test', function (accounts) {
   let ico;
   let teamTokensWallet;
 
-  const manager = '0xF1f94bAD54C8827C3B53754ad7dAa0FF5DCD527d';
+  const manager = '0x64df5Eb8E4088e1362e6aeAFB13d1121727aA9BD';
 
   before(async function () {
     // Advance to the next block to correctly read time in the solidity "now" function interpreted by testrpc
@@ -81,16 +81,8 @@ contract('Configurator integration test', function (accounts) {
 
   it ('preICO and ICO should have price as described in README', async function () {
     const preicoPrice = await preico.price();
-
-      console.log(preicoPrice);
-      console.log(tokens(24000));
-
-    //preicoPrice.should.bignumber.equal(tokens(24000));
+    preicoPrice.should.bignumber.equal(tokens(24000));
     const icoPrice = await ico.price();
-
-      console.log(icoPrice);
-      console.log(tokens(8000));
-
     icoPrice.should.bignumber.equal(tokens(8000));
   });
 
@@ -119,16 +111,16 @@ contract('Configurator integration test', function (accounts) {
 
   it ('preICO and ICO should have wallets as described in README', async function () {
     const preicoWallet = await preico.wallet();
-    preicoWallet.should.bignumber.equal('0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01');
+    preicoWallet.should.bignumber.equal('0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4');
     const icoWallet = await ico.wallet();
-    icoWallet.should.bignumber.equal('0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F');
+    icoWallet.should.bignumber.equal('0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4');
   });
 
   it ('Bounty wallet and reserved wallet should be as described in README', async function () {
     const reservedWallet = await ico.reservedTokensWallet();
-    reservedWallet.should.bignumber.equal('0xE1D1898660469797B22D348Ff67d54643d848295');
+    reservedWallet.should.bignumber.equal('0xdA893B4788D7E915722a651aF2942C376Df05e64');
     const bountyWallet = await ico.bountyTokensWallet();
-    bountyWallet.should.bignumber.equal('0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6');
+    bountyWallet.should.bignumber.equal('0x8f617f7C45F14edd5bdE074739D700e9A963Db8c');
   });
 
   it ('team tokens wallet start lock period should be as described in README', async function () {

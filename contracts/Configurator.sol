@@ -23,7 +23,7 @@ contract Configurator is Ownable {
 
     preICO = new PreICO();
 
-    preICO.setWallet(0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01);
+    preICO.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
     preICO.setStart(1539216000); // 11 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
     preICO.addValueBonus(10000000000000000000, 15); // 10 eth - 15%
@@ -49,9 +49,9 @@ contract Configurator is Ownable {
     ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
     ico.setPrice(800000000000);
-    ico.setWallet(0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F);
-    ico.setBountyTokensWallet(0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6);
-    ico.setReservedTokensWallet(0xE1D1898660469797B22D348Ff67d54643d848295);
+    ico.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
+    ico.setBountyTokensWallet(0x8f617f7C45F14edd5bdE074739D700e9A963Db8c);
+    ico.setReservedTokensWallet(0xdA893B4788D7E915722a651aF2942C376Df05e64);
     ico.setStart(1543622400); // 01 Dec 2018 00:00:00 GMT
     ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setTeamTokensPercent(12);
@@ -69,7 +69,7 @@ contract Configurator is Ownable {
 
     preICO.setNextSaleAgent(ico);
 
-    address manager = 0xF1f94bAD54C8827C3B53754ad7dAa0FF5DCD527d;
+    address manager = 0x64df5Eb8E4088e1362e6aeAFB13d1121727aA9BD;
 
     token.transferOwnership(manager);
     preICO.transferOwnership(manager);

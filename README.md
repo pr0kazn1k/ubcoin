@@ -55,10 +55,10 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Bounty tokens wallet_        : 0xdAA156b6eA6b9737eA20c68Db4040B1182E487B6
-* _Reserved tokens wallet_      : 0xE1D1898660469797B22D348Ff67d54643d848295
+* _Bounty tokens wallet_        : 0x8f617f7C45F14edd5bdE074739D700e9A963Db8c
+* _Reserved tokens wallet_      : 0xdA893B4788D7E915722a651aF2942C376Df05e64
 * _Team tokens lock period_     : 180 days lock
-* _Contracts owner_             : 0xF1f94bAD54C8827C3B53754ad7dAa0FF5DCD527d
+* _Contracts owner_             : 0x64df5Eb8E4088e1362e6aeAFB13d1121727aA9BD
 
 ### Links
 1. _Token_ - https://etherscan.io/token/0x2d3e7d4870a51b918919e7b851fe19983e4c38d5
@@ -74,7 +74,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Hardcap_                     : 1 000 ETH
 * _Period_                      : 20 days
 * _Start_                       : 10 Oct 2018 00:00:00 GMT
-* _Wallet_                      : 0x00EE9d057f66754C7D92550F77Aeb0A87AE34B01
+* _Wallet_                      : 0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4
 
 ##### Value bonus
 * 10 eth - 15%
@@ -88,7 +88,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Softcap_                     : 1 500 ETH
 * _Period_                      : 80 days
 * _Start_                       : 02 Apr 2019 00:00:00 GMT
-* _Wallet_                      : 0x5FB78D8B8f1161731BC80eF93CBcfccc5783356F 
+* _Wallet_                      : 0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4 
 
 ##### Milestones
 1. 10 days, 1 ETH = 15 040 Tokens (Technically +88%)
