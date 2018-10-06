@@ -589,9 +589,111 @@ contract StagedCrowdsale is Ownable {
 
 }
 
+// File: contracts/ValueBonusFeature.sol
+
+contract ValueBonusFeature is PercentRateProvider {
+
+  using SafeMath for uint;
+
+  bool public activeValueBonus = true;
+
+  struct ValueBonus {
+    uint from;
+    uint bonus;
+  }
+
+  ValueBonus[] public valueBonuses;
+
+  modifier checkPrevBonus(uint number, uint from, uint bonus) {
+    if(number > 0 && number < valueBonuses.length) {
+      ValueBonus storage valueBonus = valueBonuses[number - 1];
+      require(valueBonus.from < from && valueBonus.bonus < bonus);
+    }
+    _;
+  }
+
+  modifier checkNextBonus(uint number, uint from, uint bonus) {
+    if(number + 1 < valueBonuses.length) {
+      ValueBonus storage valueBonus = valueBonuses[number + 1];
+      require(valueBonus.from > from && valueBonus.bonus > bonus);
+    }
+    _;
+  }
+
+  function setActiveValueBonus(bool newActiveValueBonus) public onlyOwner {
+    activeValueBonus = newActiveValueBonus;
+  }
+
+  function addValueBonus(uint from, uint bonus) public onlyOwner checkPrevBonus(valueBonuses.length - 1, from, bonus) {
+    valueBonuses.push(ValueBonus(from, bonus));
+  }
+
+  function getValueBonusTokens(uint tokens, uint invested) public view returns(uint) {
+    uint valueBonus = getValueBonus(invested);
+    if(valueBonus == 0) {
+      return 0;
+    }
+    return tokens.mul(valueBonus).div(percentRate);
+  }
+
+  function getValueBonus(uint value) public view returns(uint) {
+    uint bonus = 0;
+    if(activeValueBonus) {
+      for(uint i = 0; i < valueBonuses.length; i++) {
+        if(value >= valueBonuses[i].from) {
+          bonus = valueBonuses[i].bonus;
+        } else {
+          return bonus;
+        }
+      }
+    }
+    return bonus;
+  }
+
+  function removeValueBonus(uint8 number) public onlyOwner {
+    require(number < valueBonuses.length);
+
+    delete valueBonuses[number];
+
+    for (uint i = number; i < valueBonuses.length - 1; i++) {
+      valueBonuses[i] = valueBonuses[i+1];
+    }
+
+    valueBonuses.length--;
+  }
+
+  function changeValueBonus(uint8 number, uint from, uint bonus) public onlyOwner checkPrevBonus(number, from, bonus) checkNextBonus(number, from, bonus) {
+    require(number < valueBonuses.length);
+    ValueBonus storage valueBonus = valueBonuses[number];
+    valueBonus.from = from;
+    valueBonus.bonus = bonus;
+  }
+
+  function insertValueBonus(uint8 numberAfter, uint from, uint bonus) public onlyOwner checkPrevBonus(numberAfter, from, bonus) checkNextBonus(numberAfter, from, bonus) {
+    require(numberAfter < valueBonuses.length);
+
+    valueBonuses.length++;
+
+    for (uint i = valueBonuses.length - 2; i > numberAfter; i--) {
+      valueBonuses[i + 1] = valueBonuses[i];
+    }
+
+    valueBonuses[numberAfter + 1] = ValueBonus(from, bonus);
+  }
+
+  function clearValueBonuses() public onlyOwner {
+    require(valueBonuses.length > 0);
+    for (uint i = 0; i < valueBonuses.length; i++) {
+      delete valueBonuses[i];
+    }
+    valueBonuses.length = 0;
+  }
+
+}
+
 // File: contracts/ICO.sol
 
-contract ICO is StagedCrowdsale, CommonSale {
+contract ICO is ValueBonusFeature, StagedCrowdsale, CommonSale {
 
   FreezeTokensWallet public teamTokensWallet;
 
@@ -632,12 +734,12 @@ contract ICO is StagedCrowdsale, CommonSale {
   function calculateTokens(uint _invested) internal returns(uint) {
     uint milestoneIndex = currentMilestone(start);
     Milestone storage milestone = milestones[milestoneIndex];
-
     uint tokens = _invested.mul(price).div(1 ether);
+    uint valueBonusTokens = getValueBonusTokens(tokens, _invested);
     if(milestone.bonus > 0) {
       tokens = tokens.add(tokens.mul(milestone.bonus).div(percentRate));
     }
-    return tokens;
+    return tokens.add(valueBonusTokens);
   }
 
   function finish() public onlyOwner {
@@ -661,65 +763,6 @@ contract ICO is StagedCrowdsale, CommonSale {
 
 }
 
-// File: contracts/NextSaleAgentFeature.sol
-
-contract NextSaleAgentFeature is Ownable {
-
-  address public nextSaleAgent;
-
-  function setNextSaleAgent(address newNextSaleAgent) public onlyOwner {
-    nextSaleAgent = newNextSaleAgent;
-  }
-
-}
-
-// File: contracts/WhiteListFeature.sol
-
-contract WhiteListFeature is CommonSale {
-
-  mapping(address => bool)  public whiteList;
-
-  function addToWhiteList(address _address) public onlyDirectMintAgentOrOwner {
-    whiteList[_address] = true;
-  }
-
-  function deleteFromWhiteList(address _address) public onlyDirectMintAgentOrOwner {
-    whiteList[_address] = false;
-  }
-
-}
-
-// File: contracts/PreICO.sol
-
-contract PreICO is NextSaleAgentFeature, WhiteListFeature {
-
-  uint public period;
-
-  function calculateTokens(uint _invested) internal returns(uint) {
-    return _invested.mul(price).div(1 ether);
-  }
-
-  function setPeriod(uint newPeriod) public onlyOwner {
-    period = newPeriod;
-  }
-
-  function finish() public onlyOwner {
-    token.setSaleAgent(nextSaleAgent);
-  }
-
-  function endSaleDate() public view returns(uint) {
-    return start.add(period * 1 days);
-  }
-  
-  function fallback() internal minInvestLimited(msg.value) returns(uint) {
-    require(now >= start && now < endSaleDate());
-    require(whiteList[msg.sender]);
-    wallet.transfer(msg.value);
-    return mintTokensByETH(msg.sender, msg.value);
-  }
-  
-}
-
 // File: contracts/ReceivingContractCallback.sol
 
 contract ReceivingContractCallback {
@@ -736,7 +779,7 @@ contract NODVIXToken is MintableToken {
 
   string public constant symbol = "NDVX";
 
-  uint32 public constant decimals = 18;
+  uint32 public constant decimals = 8;
 
   mapping(address => bool)  public registeredCallbacks;
 
@@ -766,6 +809,50 @@ contract NODVIXToken is MintableToken {
 
 }
 
+// File: contracts/NextSaleAgentFeature.sol
+
+contract NextSaleAgentFeature is Ownable {
+
+  address public nextSaleAgent;
+
+  function setNextSaleAgent(address newNextSaleAgent) public onlyOwner {
+    nextSaleAgent = newNextSaleAgent;
+  }
+
+}
+
+// File: contracts/PreICO.sol
+
+contract PreICO is ValueBonusFeature, NextSaleAgentFeature, CommonSale {
+
+  uint public period;
+
+  function calculateTokens(uint _invested) internal returns(uint) {
+    uint tokens = _invested.mul(price).div(1 ether);
+    uint valueBonusTokens = getValueBonusTokens(tokens, _invested);
+    return tokens.add(valueBonusTokens);
+  }
+
+  function setPeriod(uint newPeriod) public onlyOwner {
+    period = newPeriod;
+  }
+
+  function finish() public onlyOwner {
+    token.setSaleAgent(nextSaleAgent);
+  }
+
+  function endSaleDate() public view returns(uint) {
+    return start.add(period * 1 days);
+  }
+  
+  function fallback() internal minInvestLimited(msg.value) returns(uint) {
+    require(now >= start && now < endSaleDate());
+    wallet.transfer(msg.value);
+    return mintTokensByETH(msg.sender, msg.value);
+  }
+  
+}
+
 // File: contracts/Configurator.sol
 
 contract Configurator is Ownable {
@@ -785,15 +872,15 @@ contract Configurator is Ownable {
     preICO = new PreICO();
 
     preICO.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
-    preICO.setStart(1539216000);
+    preICO.setStart(1539216000); // 11 Oct 2018 00:00:00 GMT
     preICO.setPeriod(20);
-    preICO.addValueBonus(10000000000000000000, 15);
-    preICO.addValueBonus(30000000000000000000, 25);
-    preICO.addValueBonus(100000000000000000000, 40);
+    preICO.addValueBonus(10000000000000000000, 15); // 10 eth - 15%
+    preICO.addValueBonus(30000000000000000000, 25); // 30 eth - 25%
+    preICO.addValueBonus(100000000000000000000, 40); // 100 eth - 40%
     preICO.setPrice(2400000000000);
-    preICO.setMinInvestedLimit(10000000000000000);
+    preICO.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     preICO.setToken(token);
-    preICO.setHardcap(1000000000000000000000);
+    preICO.setHardcap(1000000000000000000000); // 1000 ETH
     token.setSaleAgent(preICO);
 
     ico = new ICO();
@@ -804,17 +891,17 @@ contract Configurator is Ownable {
     ico.addMilestone(15, 12);
     ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    ico.addValueBonus(20000000000000000000,15);
-    ico.addValueBonus(50000000000000000000,25);
-    ico.addValueBonus(100000000000000000000,50);
-    ico.setMinInvestedLimit(10000000000000000);
+    ico.addValueBonus(20000000000000000000,15); // 20 eth - 15%
+    ico.addValueBonus(50000000000000000000,25); // 50 eth - 25%
+    ico.addValueBonus(100000000000000000000,50); // 100 eth - 50%
+    ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
     ico.setPrice(800000000000);
     ico.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
     ico.setBountyTokensWallet(0x8f617f7C45F14edd5bdE074739D700e9A963Db8c);
     ico.setReservedTokensWallet(0xdA893B4788D7E915722a651aF2942C376Df05e64);
-    ico.setStart(1543622400);
-    ico.setHardcap(20000000000000000000000);
+    ico.setStart(1543622400); // 01 Dec 2018 00:00:00 GMT
+    ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
     ico.setReservedTokensPercent(9);
