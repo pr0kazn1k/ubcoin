@@ -821,7 +821,7 @@ contract NODVIXToken is MintableToken {
 
   string public constant symbol = "NDVX";
 
-  uint32 public constant decimals = 18;
+  uint32 public constant decimals = 8;
 
   mapping(address => bool)  public registeredCallbacks;
 
@@ -874,23 +874,23 @@ contract MigrationConfigurator is Ownable {
   function deploy() public onlyOwner {
     ico = new ICO();
 
-    ico.addMilestone(20, 40);
-    ico.addMilestone(20, 25);
-    ico.addMilestone(20, 20);
-    ico.addMilestone(20, 15);
-    ico.addMilestone(20, 8);
-    ico.addMilestone(4, 0);
+    ico.addMilestone(10, 88);
+    ico.addMilestone(10, 37);
+    ico.addMilestone(10, 25);
+    ico.addMilestone(15, 12);
+    ico.addMilestone(15, 7);
+    ico.addMilestone(20, 0);
     ico.addValueBonus(20000000000000000000,15); // 20 eth - 15%
     ico.addValueBonus(50000000000000000000,25); // 50 eth - 25%
     ico.addValueBonus(100000000000000000000,50); // 100 eth - 50%
-    ico.setMinInvestedLimit(100000000000000000);
+    ico.setMinInvestedLimit(10000000000000000); // 0.01 ETH
     ico.setToken(token);
-    ico.setPrice(14286000000000000000000);
+    ico.setPrice(800000000000);
     ico.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
     ico.setBountyTokensWallet(0x8f617f7C45F14edd5bdE074739D700e9A963Db8c);
     ico.setReservedTokensWallet(0xdA893B4788D7E915722a651aF2942C376Df05e64);
-    ico.setStart(1522627200); // 02 Apr 2018 00:00:00 GMT
-    ico.setHardcap(96000000000000000000000);
+    ico.setStart(1543622400); // 01 Dec 2018 00:00:00 GMT
+    ico.setHardcap(20000000000000000000000); // 20 000 ETH
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
     ico.setReservedTokensPercent(9);
