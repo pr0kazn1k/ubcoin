@@ -1,5 +1,3 @@
-![NODVIXToken](logo.png "NODVIXToken")
-
 # NODVIXToken smart contract
 
 * _Standard_        : [ERC20](https://github.com/ethereum/EIPs/blob/master/EIPS/eip-20.md)
@@ -55,16 +53,16 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 
 ## Main network configuration
 
-* _Bounty tokens wallet_        : 0x8f617f7C45F14edd5bdE074739D700e9A963Db8c
-* _Reserved tokens wallet_      : 0xdA893B4788D7E915722a651aF2942C376Df05e64
+* _Bounty tokens wallet_        : 0x0
+* _Reserved tokens wallet_      : 0x0
 * _Team tokens lock period_     : 180 days lock
-* _Contracts owner_             : 0x64df5Eb8E4088e1362e6aeAFB13d1121727aA9BD
+* _Contracts owner_             : 0x0
 
 ### Links
-1. _Token_ - https://etherscan.io/token/0x2d3e7d4870a51b918919e7b851fe19983e4c38d5
-2. _PreICO_ - https://etherscan.io/address/0xce5dbd884305a5716460dCcFfA63888Fc9BFaa72
-3. _ICO_ - https://etherscan.io/address/0x8dd9034f7ccc805bdc4d593a01f6a2e2eb94a67a
-3. _TeamWallet_ - https://etherscan.io/address/0xe564e0a6a545671d29ad690398c9e94a398434b3
+1. _Token_ - https://etherscan.io/token/0x0
+2. _PreICO_ - https://etherscan.io/address/0x0
+3. _ICO_ - https://etherscan.io/address/0x80
+3. _TeamWallet_ - https://etherscan.io/address/0x0
 
 ### Crowdsale stages
 
@@ -74,7 +72,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Hardcap_                     : 1 000 ETH
 * _Period_                      : 20 days
 * _Start_                       : 10 Oct 2018 00:00:00 GMT
-* _Wallet_                      : 0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4
+* _Wallet_                      : 0x0
 
 ##### Value bonus
 * 10 eth - 15%
@@ -88,7 +86,7 @@ Investor must not use other wallets, coinmarkets or stocks. Can lose money.
 * _Softcap_                     : 1 500 ETH
 * _Period_                      : 80 days
 * _Start_                       : 02 Apr 2019 00:00:00 GMT
-* _Wallet_                      : 0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4 
+* _Wallet_                      : 0x0 
 
 ##### Milestones
 1. 10 days, 1 ETH = 15 040 Tokens (Technically +88%)
