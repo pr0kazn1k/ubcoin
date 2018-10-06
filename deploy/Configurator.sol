@@ -785,27 +785,36 @@ contract Configurator is Ownable {
     preICO = new PreICO();
 
     preICO.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
-    preICO.setStart(1520640000); // 10 Mar 2018 00:00:00 GMT
-    preICO.setPeriod(22);
-    preICO.setPrice(33334000000000000000000);
-    preICO.setMinInvestedLimit(100000000000000000);
+    preICO.setStart(1539216000);
+    preICO.setPeriod(20);
+    preICO.addValueBonus(10000000000000000000, 15);
+    preICO.addValueBonus(30000000000000000000, 25);
+    preICO.addValueBonus(100000000000000000000, 40);
+    preICO.setPrice(2400000000000);
+    preICO.setMinInvestedLimit(10000000000000000);
     preICO.setToken(token);
-    preICO.setHardcap(8500000000000000000000);
+    preICO.setHardcap(1000000000000000000000);
     token.setSaleAgent(preICO);
 
     ico = new ICO();
 
-    ico.addMilestone(20, 40);
-    ico.addMilestone(20, 20);
+    ico.addMilestone(10, 88);
+    ico.addMilestone(10, 37);
+    ico.addMilestone(10, 25);
+    ico.addMilestone(15, 12);
+    ico.addMilestone(15, 7);
     ico.addMilestone(20, 0);
-    ico.setMinInvestedLimit(100000000000000000);
+    ico.addValueBonus(20000000000000000000,15);
+    ico.addValueBonus(50000000000000000000,25);
+    ico.addValueBonus(100000000000000000000,50);
+    ico.setMinInvestedLimit(10000000000000000);
     ico.setToken(token);
-    ico.setPrice(14286000000000000000000);
+    ico.setPrice(800000000000);
     ico.setWallet(0x966913BE196d9f9bd17CffB36D3A56cadDD7a9A4);
     ico.setBountyTokensWallet(0x8f617f7C45F14edd5bdE074739D700e9A963Db8c);
     ico.setReservedTokensWallet(0xdA893B4788D7E915722a651aF2942C376Df05e64);
-    ico.setStart(1522627200); // 02 Apr 2018 00:00:00 GMT
-    ico.setHardcap(96000000000000000000000);
+    ico.setStart(1543622400);
+    ico.setHardcap(20000000000000000000000);
     ico.setTeamTokensPercent(12);
     ico.setBountyTokensPercent(4);
     ico.setReservedTokensPercent(9);
